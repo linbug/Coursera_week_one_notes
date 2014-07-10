@@ -55,3 +55,36 @@ r = matrix(1:6,2,3) # r is a matrix with values from 1 to 6 and 2 rows and 3 col
 r[1,2] # subset the element in the 1st row, 2d column. Returns a Vector NOT a 1by1 matrix. 'drop = false' preserves dimensions
 r[1, ] #returns a vector with elements 1,3,5; 
 r[1, ,drop = FALSE] #returns a matrix
+
+-----------------------------------------------------------------
+  
+#Subsetting part 2
+
+x = list(foo = 1:4, bar = 0.6) 
+x[1]                                #we can also subset lists. Single square brackets return elements that are same class as the original
+x[[1]]                              #returns JUST a sequence 1 through 4; no 'list' is given.
+x$bar                               #this returns the element that is associated with the name "bar"
+x[["bar"]]                          #returns the same as $bar
+x["bar"]                            #returns a list with the element "bar" in it
+x[c(1:2)]                           #you can extract several elements of a list by passing in a numeric vector
+name = "foo"
+x[[name]]                           #computed index for foo
+x$name                              #doesn't work!
+x[[c(1,3)]]                         #extracts the third element of the first element ( a list)
+x[[1]][[3]]                         #gives the same result
+
+y = list(aardvark = 1:5)
+y$a                                 #Partial matching is ok with $
+y[["a"]]                            #doesn't work
+y[["a", exact = FALSE]]             #this works
+z = c(1,2,NA,4,NA,6)                #How do we remove these NAs?
+bad = is.na(z)                      #Create a boolean called "bad" that includes all NA elements in z
+z[!bad]                             #Then create a subset of z that is not NA
+
+m = c(1,2,NA,4,NA,7)
+n = c(5,6,NA,NA,7,8)                #What if we want to subset from multiple objects?
+good = complete.cases (m,n)         #Use complete.cases function on both vectors
+good                                #Now this vector returns a boolean vector of all of the non-missing elelemnts of both lists
+m[good]                             #This returns a subset of all the good elements in m
+n[good]
+-------------------------------------------------------------------------------
