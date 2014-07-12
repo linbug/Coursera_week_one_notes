@@ -88,3 +88,23 @@ good                                #Now this vector returns a boolean vector of
 m[good]                             #This returns a subset of all the good elements in m
 n[good]
 -------------------------------------------------------------------------------
+
+  #Reading and writing data part 1
+  
+read.table
+read.csv                            #read text files that have data in rows and columns; return a data frame in R (inverse of write.table)
+readLines                           #For reading lines of a text file, gives caharacter vector (inverse of writeLines)
+source                              #for reading code in R (inverse of dump)
+dget                                #for reading R code that has been deparsed (inverse of dput)
+load                                #for reading in saved work spaces (inverse of save)
+unserialize                         #for reading single R objects in binary form (inverse of serialize)
+
+data = read.table("foo".txt)        #for small to medium sized datasets, you will not need to specify any arguments
+help(read.table)                    #learn this so you can recite this in your sleep!
+ 
+initial = read.table("datatable.txt", nrows = 100)           #A quick and dirty way of figuring out the classes of each column - take just part of the dataset
+classes = sapply(initial, class)                             #now loop over each column using sapply function to read classes from the initial dataset
+tabAll = read.table ("datatable.txt", colClasses = classes)   #now read through the entire dataset, setting colClasses to classes
+
+
+
