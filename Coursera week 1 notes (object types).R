@@ -105,6 +105,70 @@ help(read.table)                    #learn this so you can recite this in your s
 initial = read.table("datatable.txt", nrows = 100)           #A quick and dirty way of figuring out the classes of each column - take just part of the dataset
 classes = sapply(initial, class)                             #now loop over each column using sapply function to read classes from the initial dataset
 tabAll = read.table ("datatable.txt", colClasses = classes)   #now read through the entire dataset, setting colClasses to classes
-
-
-
+help(sapply)
+----------------------------------------------------------------------------------------
+#Reading and writing data (part 2)
+  
+  --------------------------------------------------------------------------
+  #Week 1 quiz
+  x = 4L
+  
+  
+class(x)
+x = c(4,TRUE)
+class(x)
+x = c(1,3,5)
+y = c(3,2,10)
+rbind(x,y)
+cbind(x,y)
+x <- list(2, "a", "b", TRUE)
+x[[2]]
+x <- 1:4 
+y <- 2:3 
+x+y
+getwd()
+quizdata = read.csv("hw1_data.csv")
+quizdata
+quizdata [1:2,]
+nrows(quizdata)
+quizdata(nrows)
+nrow(quizdata)
+quizdata[152:153,]
+quizdata[ozone[47]]
+quizdata$Ozone[47]
+nrow(quizdata$Ozone)
+bad = is.na(quizdata$Ozone)
+len(bad)
+dim(bad)
+bad
+help(length)
+length(bad)
+z[bad]
+z=quizdata$Ozone[bad]
+length(z)
+Ozone = quizdata$Ozone[!bad]
+mean(Ozone)
+y = quizdata$Ozone[quizdata$Ozone> 31]
+newdata = subset(quizdata, (Ozone > 31) && (Temp < 90)) 
+newdata
+help(subset)
+newdata = quizdata[(quizdata$Ozone>31) & (quizdata$Temp > 90),]
+mean(newdata$Solar.R, na.rm=TRUE)
+help(complete.cases)
+bad = is.na(newdata)
+newcomplete = newdata[!bad,]
+newcomplete
+newdata
+help(na.rm)
+help(na)
+mean(quizdata$Temp,trim=0,na.rm=TRUE, quizdata$Month == 6)
+help(mean)
+June = quizdata[quizdata$Month == 6,]
+mean(June$Temp)
+May = quizdata[quizdata$Month ==5,]
+help(rmax)
+??max
+max(May$Ozone, na.rm = TRUE)
+x <- c(1,3, 5) 
+y <- c(3, 2, 10)
+cbind(x,y)
